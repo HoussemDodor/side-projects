@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import { v4 as uuid } from 'uuid';
 
 export const AddTransaction = () => {
   const { addTransaction } = useContext(GlobalContext);
@@ -11,8 +12,8 @@ export const AddTransaction = () => {
     e.preventDefault();
 
     const newTransaction = {
-      id: Math.floor(Math.random() * 10000000),
-      amount: +amount,
+      id: uuid(),
+      amount: +amount, // By adding the "+" before the variable it converts it into a number
       text
     };
 
