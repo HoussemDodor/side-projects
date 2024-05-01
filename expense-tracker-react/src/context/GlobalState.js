@@ -1,8 +1,10 @@
 import React, { createContext, useReducer } from "react";
-import AppReducer from "./AppReducer";
-import transactionData from "../data/data.json"
+import { AppReducer } from "./AppReducer";
+import transactionData from "../data/data.json";
 
-const initialState = transactionData;
+const initialState = JSON.parse(localStorage.getItem("transactions")) ?? transactionData
+localStorage.setItem("transactions", JSON.stringify(initialState))
+
 
 export const GlobalContext = createContext(initialState);
 
