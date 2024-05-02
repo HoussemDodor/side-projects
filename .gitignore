@@ -5,6 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
+# dev files
+.env
+
 # testing
 coverage
 
