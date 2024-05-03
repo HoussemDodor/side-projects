@@ -1,4 +1,5 @@
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutContext();
@@ -24,7 +25,7 @@ const WorkoutDetails = ({ workout }) => {
       <p>
         <strong>reps:</strong> {workout.reps}
       </p>
-      <p>{workout.createdAt}</p>
+      <p>{formatDistanceToNow(workout.createdAt)} ago</p>
       <span onClick={handleClick}>Delete</span>
     </div>
   );
