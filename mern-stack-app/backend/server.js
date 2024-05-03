@@ -3,12 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const workoutRoutes = require("./routes/workoutRoute");
+const errorHandler = require("./middleware/errorHandler");
 
 // Express app
 const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(errorHandler)
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);

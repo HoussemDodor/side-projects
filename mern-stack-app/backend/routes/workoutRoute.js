@@ -4,7 +4,7 @@ const { createWorkout, getAllWorkouts, getWorkout, deleteWorkout, updateWorkout 
 const router = express.Router();
 
 // GET all
-router.get("/all", getAllWorkouts);
+router.get("/", getAllWorkouts);
 
 // GET single
 router.get("/:id", getWorkout);

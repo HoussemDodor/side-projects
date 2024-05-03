@@ -20,6 +20,7 @@ const getWorkout = async (req, res) => {
 
 // GET ALL
 const getAllWorkouts = async (req, res) => {
+  console.log("GET all workouts")
   const workouts = await Workout.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(workouts);
