@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import axios from "../api/axios";
 
 // Components
 import WorkoutDetails from "../components/WorkoutDetails";
@@ -12,16 +13,17 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts", {
+      await axios.get("/api/workouts", {
         headers: {
-          "Authorization": `Bearer ${user.token}`
+          Authorization: `Bearer ${user.token}`,
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          dispatch({ type: "SET_WORKOUTS", payload: res.data });
         }
-      });
-      const json = await response.json();
+      }).catch((err) => console.log(err.res.data.error));
 
-      if (response.ok) {
-        dispatch({ type: "SET_WORKOUTS", payload: json });
-      }
+      
     };
 
     if (user) {

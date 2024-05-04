@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import axios from "../api/axios"
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -10,24 +11,18 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/user/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const json = await response.json();
-    if (!response.ok) {
+    await axios.post("/api/user/signup", {email, password}).then((res) => {
+      if (res.status === 200) {      
+        localStorage.setItem("user", JSON.stringify(res.data));
+        dispatch({ type: "LOGIN", payload: res.data });  
+        setIsLoading(false);
+      }
+    })
+    .catch((err) => {
+      console.log(err)
       setIsLoading(false);
-      setError(json.error);
-    }
-
-    if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(json));
-
-      dispatch({ type: "LOGIN", payload: json });
-      setIsLoading(false);
-    }
+      setError(err.response.data.error);
+    })
   };
   return {signup, isLoading, error};
 };

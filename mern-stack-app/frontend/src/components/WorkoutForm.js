@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import axios from "../api/axios";
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutContext();
@@ -15,37 +16,37 @@ const WorkoutForm = () => {
     e.preventDefault();
 
     if (!user) {
-      setError("You must be logged in")
-      return
+      setError("You must be logged in");
+      return;
     }
 
     const workout = { title, load, reps };
 
-    const response = await fetch("api/workouts", {
-      method: "POST",
-      body: JSON.stringify(workout),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.token}`
-      },
-    });
+    await axios
+      .post(
+        "/api/workouts",
+        workout,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          setTitle("");
+          setReps("");
+          setLoad("");
+          setError(null);
 
-    const json = await response.json();
+          console.log("New workout added", res.data);
 
-    if (!response.ok) {
-      setError(json.error);
-    }
+          dispatch({ type: "CREATE_WORKOUT", payload: res.data });
+        }
+      }).catch((err) => {
+        setError(err.response.data.error);
+      })
 
-    if (response.ok) {
-      setTitle("");
-      setReps("");
-      setLoad("");
-      setError(null);
-
-      console.log("New workout added", json);
-      
-      dispatch({ type: "CREATE_WORKOUT", payload: json });
-    }
   };
 
   return (
