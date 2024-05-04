@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes")
 
 // Middleware imports
 const errorHandler = require("./middleware/errorHandler");
+const { verifyJWT } = require("./middleware/verifyJWT");
 
 //
 //  Uses
@@ -29,9 +30,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
-app.use("/api/workouts", workoutRoutes);
+// Unprotected Routes
 app.use("/api/user", userRoutes)
+
+// Protected Routes
+app.use(verifyJWT)
+app.use("/api/workouts", workoutRoutes);
 
 // DB connection and start app
 mongoose
