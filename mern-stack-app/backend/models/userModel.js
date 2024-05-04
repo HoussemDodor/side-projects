@@ -28,7 +28,8 @@ userSchema.statics.signup = async function (email, password) {
   if (!validator.isEmail(email)) throw Error("Email is not valid");
 
   //Check password
-  if (!validator.isStrongPassword(password)) throw Error("Password is not strong enough");
+  if (!validator.isStrongPassword(password))
+    throw Error("Password is not strong enough");
 
   // CHeck if the email is already in use
   const exists = await this.findOne({ email });
@@ -38,6 +39,22 @@ userSchema.statics.signup = async function (email, password) {
   const hash = await bcrypt.hash(password, salt);
 
   const user = await this.create({ email, password: hash });
+
+  return user;
+};
+
+// Login method
+userSchema.statics.login = async function (email, password) {
+  //Check if fields are empty
+  if (!email || !password) throw Error("All fields must be filled");
+
+  //check if user exists
+  const user = await this.findOne({ email });
+  if (!user) throw Error("Incorrect email");
+
+  //check if password matches
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) throw Error("Invalid email/password");
 
   return user;
 };
