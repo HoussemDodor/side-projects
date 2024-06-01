@@ -11,6 +11,7 @@ const corsOptions = require("./config/corsOptions");
 // Route imports
 const authRoutes = require("./routes/authRoutes")
 const userRoutes = require("./routes/userRoutes")
+const customerRoutes = require("./routes/customerRoutes")
 
 
 // Middleware imports
@@ -34,11 +35,12 @@ app.use(cors(corsOptions));
 app.use(requestLogger);
 
 // Unprotected Routes
-app.use("/api/auth", authRoutes)
+app.use("/auth", authRoutes)
 
 // Protected Routes
 app.use(verifyJWT)
-app.use("/api/user", userRoutes)
+app.use("/user", userRoutes)
+app.use("/customer", customerRoutes)
 
 // DB connection and start app
 mongoose

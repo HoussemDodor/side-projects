@@ -31,11 +31,11 @@ const userSchema = new Schema(
 
 // Static signup method
 userSchema.statics.signup = async function (email, password) {
-  // First make email all lowercase
-  email = email.toLowerCase();
-
   //Check if fields are empty
   if (!email || !password) throw Error("All fields must be filled");
+  
+  // First make email all lowercase
+  email = email.toLowerCase();
 
   //Check if email is a valid one
   if (!validator.isEmail(email)) throw Error("Email is not valid");
