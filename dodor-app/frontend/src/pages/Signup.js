@@ -16,7 +16,7 @@ const Signup = () => {
     setIsLoading(true);
     setError(null);
 
-    await axios.post("/api/auth/signup", {email, password}).then((res) => {
+    await axios.post("/auth/signup", {email, password}).then((res) => {
       if (res.status === 200) {      
         localStorage.setItem("user", JSON.stringify(res.data));
         dispatch({ type: "LOGIN", payload: res.data });  

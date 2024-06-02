@@ -18,7 +18,7 @@ const Login = () => {
     setIsLoading(true);
     setError(null);
 
-    axios.post("/api/auth/login", {email, password}).then((res) => {
+    axios.post("/auth/login", {email, password}).then((res) => {
       if (res.status === 200) {      
         localStorage.setItem("user", JSON.stringify(res.data));
         dispatch({ type: "LOGIN", payload: res.data });  
