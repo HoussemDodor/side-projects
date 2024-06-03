@@ -114,7 +114,7 @@ export default function Navbar() {
                     >
                       <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <MenuItem>
-                          <span className="block px-4 py-2 text-m text-black text-strong">
+                          <span className="block px-4 py-2 text-black font-bold">
                             {user.email}
                           </span>
                         </MenuItem>
