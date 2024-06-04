@@ -23,12 +23,12 @@ const CustomerOverview = () => {
           err.response?.data?.error ? err.response.data.error : err.message
         );
       });
-  }, []);
+  }, [user.acces_token]);
 
   return (
     <div className="bg-gray-200 min-h-[90vh] md:flex md:flex-row-reverse justify-center p-5">
       <CreateCustomerForm />
-      <div className="bg-gray-100 rounded shadow-lg md:w-[900px] mt-5 p-5 overflow-y-scroll">
+      <div className="bg-gray-100 rounded shadow-lg md:w-[900px] max-h-[90vh] mt-5 p-5 overflow-y-scroll">
         <h1 className="text-4xl">Klanten overzicht</h1>
         {customers &&
           customers.map((item) => (
