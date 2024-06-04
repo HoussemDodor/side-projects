@@ -1,4 +1,5 @@
 const Customer = require("../models/customerModel");
+const mongoose = require("mongoose");
 
 const createCustomer = async (req, res) => {
   try {
@@ -13,7 +14,19 @@ const updateCustomer = async (req, res) => {};
 
 const deleteCustomer = async (req, res) => {};
 
-const getCustomer = async (req, res) => {};
+const getCustomer = async (req, res) => {
+  const { id } = req.params
+
+  if (!mongoose.isValidObjectId(id))
+    return res.status(404).json({ error: "invalid customer ID" });
+
+  try {
+    const customer = await Customer.findById(id)
+    res.status(200).json(customer)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const getAllCustomer = async (req, res) => {
   try {

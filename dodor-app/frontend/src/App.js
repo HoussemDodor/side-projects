@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Account from "./pages/Account";
 import CustomerOverview from "./pages/CustomerOverview";
 import Navbar from "./components/Navbar";
+import CustomerDetails from "./pages/CustomerDetails";
 
 function App() {  
   const { user } = useAuthContext();
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={user ? <Home /> : <Login />} />
           <Route path="/customerOverview" element={user ? <CustomerOverview /> : <Login />} />
+          <Route path="/customer/:id" element={user ? <CustomerDetails /> : <Login />} />
           <Route path="/account" element={user ? <Account /> : <Login />} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />

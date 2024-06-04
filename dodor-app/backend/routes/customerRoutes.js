@@ -13,6 +13,6 @@ router.delete("/delete/:id", deleteCustomer)
 
 router.post("/create", createCustomer)
 
-router.get("/getCustomer/:id", getCustomer)
+router.get("/get/:id", getCustomer)
 
 module.exports = router
