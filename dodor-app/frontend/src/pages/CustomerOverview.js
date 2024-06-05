@@ -26,7 +26,7 @@ const CustomerOverview = () => {
   }, [user.acces_token]);
 
   return (
-    <div className="bg-gray-200 max-h-[93vh] md:flex md:flex-row-reverse justify-center">
+    <div className="bg-gray-200 h-[93vh] md:flex md:flex-row-reverse justify-center">
       <CreateCustomerForm />
       <div className="bg-gray-100 rounded shadow-lg md:w-[900px] max-h-[90vh] m-5 p-5 overflow-y-scroll">
         <h1 className="text-4xl">Klanten overzicht</h1>

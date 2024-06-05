@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { nl } from "date-fns/locale";
 import axios from "../api/axios";
@@ -8,10 +8,11 @@ import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 const CustomerDetails = () => {
   const { user } = useAuthContext();
+  const navigate = useNavigate()
   const { id } = useParams();
 
   const [error, setError] = useState("");
-  const [succes, setSucces] = useState("")
+  const [succes, setSucces] = useState("");
   const [customer, setCustomer] = useState(null);
 
   useEffect(() => {
@@ -38,8 +39,8 @@ const CustomerDetails = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          setCustomer(res.data)
-          setSucces("Klant bijgewerkt")
+          setCustomer(res.data);
+          setSucces("Klant bijgewerkt");
         }
       })
       .catch((err) => {
@@ -50,7 +51,23 @@ const CustomerDetails = () => {
   };
 
   const handleDelete = () => {
-    console.log("HandleDelete method not yet implemented");
+    if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?")) return;
+
+    axios
+      .delete(`/customer/delete/${id}`, {
+        headers: { Authorization: `Bearer ${user.acces_token}` },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/customerOverview")
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        setError(
+          err.response?.data?.error ? err.response.data.error : err.message
+        );
+      });
   };
 
   return (
@@ -136,7 +153,9 @@ const CustomerDetails = () => {
                 pattern="[0-9]{6,}"
                 id="phoneNumber"
                 name="phoneNumber"
-                onInvalid={(e) => e.target.setCustomValidity("Minimaal 6 cijfers")}
+                onInvalid={(e) =>
+                  e.target.setCustomValidity("Minimaal 6 cijfers")
+                }
                 value={customer.phoneNumber}
                 onChange={(e) =>
                   setCustomer({ ...customer, phoneNumber: e.target.value })
@@ -183,7 +202,7 @@ const CustomerDetails = () => {
               {error}
             </div>
           )}
-          
+
           {succes && (
             <div className="bg-[#efffef] p-2 max-w-80 border-solid border-2 border-green-600 rounded-xl">
               {succes}
