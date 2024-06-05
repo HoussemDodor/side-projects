@@ -10,7 +10,20 @@ const createCustomer = async (req, res) => {
   }
 };
 
-const updateCustomer = async (req, res) => {};
+const updateCustomer = async (req, res) => {
+  const updatedCustomer = req.body
+
+  if (!mongoose.isValidObjectId(updatedCustomer._id))
+    return res.status(404).json({ error: "invalid customer ID" });
+
+  try {
+    delete updateCustomer.updatedAt
+    const customer = await Customer.findByIdAndUpdate(updatedCustomer._id, updatedCustomer, { new: true })
+    res.status(200).json(customer)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const deleteCustomer = async (req, res) => {};
 

@@ -77,7 +77,7 @@ const CustomerDetails = () => {
               gecreërd
             </p>
             <p className="italic mb-5">
-              {formatDistanceToNow(customer.createdAt, { locale: nl })} geleden
+              {formatDistanceToNow(customer.updatedAt, { locale: nl })} geleden
               laatst bewerkt
             </p>
             <div className="flex mb-5">
@@ -117,7 +117,7 @@ const CustomerDetails = () => {
                 Email:
               </label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 value={customer.email}
@@ -132,9 +132,11 @@ const CustomerDetails = () => {
                 Telefoon:
               </label>
               <input
-                type="text"
+                type="tel"
+                pattern="[0-9]{6,}"
                 id="phoneNumber"
                 name="phoneNumber"
+                onInvalid={(e) => e.target.setCustomValidity("Minimaal 6 cijfers")}
                 value={customer.phoneNumber}
                 onChange={(e) =>
                   setCustomer({ ...customer, phoneNumber: e.target.value })
@@ -160,7 +162,7 @@ const CustomerDetails = () => {
             </div>
           </div>
 
-          <div>
+          <div className="mb-5">
             <button
               type="submit"
               className="text-white inline-flex mr-2 bg-gray-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-auto px-4 py-2.5 text-center"
