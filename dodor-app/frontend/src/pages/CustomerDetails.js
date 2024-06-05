@@ -11,6 +11,7 @@ const CustomerDetails = () => {
   const { id } = useParams();
 
   const [error, setError] = useState("");
+  const [succes, setSucces] = useState("")
   const [customer, setCustomer] = useState(null);
 
   useEffect(() => {
@@ -30,9 +31,22 @@ const CustomerDetails = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    console.log(customer);
 
-    console.log("HandleSave method not yet implemented");
+    axios
+      .patch(`/customer/update/${id}`, customer, {
+        headers: { Authorization: `Bearer ${user.acces_token}` },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          setCustomer(res.data)
+          setSucces("Klant bijgewerkt")
+        }
+      })
+      .catch((err) => {
+        setError(
+          err.response?.data?.error ? err.response.data.error : err.message
+        );
+      });
   };
 
   const handleDelete = () => {
@@ -167,20 +181,26 @@ const CustomerDetails = () => {
               {error}
             </div>
           )}
+          
+          {succes && (
+            <div className="bg-[#efffef] p-2 max-w-80 border-solid border-2 border-green-600 rounded-xl">
+              {succes}
+            </div>
+          )}
         </form>
       ) : (
         <div className="bg-gray-100 rounded shadow-lg max-h-[90vh] w-full m-5 p-5">
           <h1 className="text-4xl mb-5 font-bold">Klant niet gevonden</h1>
           <div className="bg-[#ffefef] p-2 mb-5 max-w-80 border-solid border-2 border-red-600 rounded-xl">
-              {error}
-            </div>
-            <Link
-          to="/customerOverview"
-          className="text-white inline-flex mb-5 bg-gray-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-auto px-4 py-2.5 text-center"
-        >
-          <ArrowLeftIcon className="size-5 mr-2 text-white" />
-          <button>Terug</button>
-        </Link>
+            {error}
+          </div>
+          <Link
+            to="/customerOverview"
+            className="text-white inline-flex mb-5 bg-gray-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-auto px-4 py-2.5 text-center"
+          >
+            <ArrowLeftIcon className="size-5 mr-2 text-white" />
+            <button>Terug</button>
+          </Link>
         </div>
       )}
     </div>
