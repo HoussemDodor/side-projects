@@ -14,6 +14,7 @@ const CustomerDetails = () => {
   const [error, setError] = useState("");
   const [succes, setSucces] = useState("");
   const [customer, setCustomer] = useState(null);
+  const [statuses, setStatuses] = useState('')
 
   useEffect(() => {
     axios
@@ -28,6 +29,21 @@ const CustomerDetails = () => {
           err.response?.data?.error ? err.response.data.error : err.message
         );
       });
+
+      axios
+      .get(`/customer/statuses`, {
+        headers: { Authorization: `Bearer ${user.acces_token}` },
+      })
+      .then((res) => {
+        setStatuses(res.data);
+      })
+      .catch((err) => {
+        setError(
+          err.response?.data?.error ? err.response.data.error : err.message
+        );
+      });
+
+      
   }, [user, id]);
 
   const handleSave = (e) => {
@@ -170,13 +186,15 @@ const CustomerDetails = () => {
               <select
                 id="status"
                 name="status"
+                value={customer.status}
                 onChange={(e) =>
                   setCustomer({ ...customer, status: e.target.value })
                 }
                 className="mr-2 w-full bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
               >
-                <option>In afwachting</option>
-                <option>Geaccepteerd</option>
+                {statuses && statuses.map((item) => (
+                  <option>{item}</option>
+                ))}
               </select>
             </div>
           </div>

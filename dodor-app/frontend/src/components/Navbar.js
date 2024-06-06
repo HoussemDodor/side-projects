@@ -133,7 +133,7 @@ export default function Navbar() {
                         </MenuItem>
                         <MenuItem>
                           {({ focus }) => (
-                            <button
+                            <Link
                               onClick={logout}
                               className={classNames(
                                 focus ? "bg-gray-100" : "",
@@ -141,7 +141,7 @@ export default function Navbar() {
                               )}
                             >
                               Uitloggen
-                            </button>
+                            </Link>
                           )}
                         </MenuItem>
                       </MenuItems>

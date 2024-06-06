@@ -30,8 +30,7 @@ const customerSchema = new Schema(
       required: true,
       enum: ["Concept", "Offerte verstuurd", "Bestelling geplaatst", "Wachten op betaling", "Afgerond"],
       default: "Concept",
-    },
-    
+    },    
   },
   { timestamps: true }
 );
