@@ -66,10 +66,20 @@ const getAllCustomer = async (req, res) => {
   }
 };
 
+const getCustomerStatuses = async (req, res) => {
+  try {
+    const statuses = await Customer.schema.path('status').enumValues
+    res.status(200).json(statuses)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 module.exports = {
   createCustomer,
   updateCustomer,
   deleteCustomer,
   getCustomer,
   getAllCustomer,
+  getCustomerStatuses,
 };

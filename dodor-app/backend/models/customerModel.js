@@ -11,7 +11,7 @@ const customerSchema = new Schema(
     },
     name: {
       type: String,
-      required: false,
+      required: true,
     },
     surname: {
       type: String,
@@ -21,6 +21,17 @@ const customerSchema = new Schema(
       type: String,
       required: false,
     },
+    phoneNumber: {
+      type: String,
+      required: false,
+    },
+    status: {
+      type: String,
+      required: true,
+      enum: ["Concept", "Offerte verstuurd", "Bestelling geplaatst", "Wachten op betaling", "Afgerond"],
+      default: "Concept",
+    },
+    
   },
   { timestamps: true }
 );

@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { createCustomer, getCustomer, getAllCustomer, deleteCustomer, updateCustomer } = require('../controllers/customerController')
+const { createCustomer, getCustomer, getAllCustomer, deleteCustomer, updateCustomer, getCustomerStatuses } = require('../controllers/customerController')
 const { get } = require('mongoose')
 
 const router = express.Router()
@@ -14,5 +14,7 @@ router.delete("/delete/:id", deleteCustomer)
 router.post("/create", createCustomer)
 
 router.get("/get/:id", getCustomer)
+
+router.get("/statuses", getCustomerStatuses)
 
 module.exports = router
