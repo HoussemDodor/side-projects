@@ -1,7 +1,6 @@
 const express = require('express')
 
 const { createCustomer, getCustomer, getAllCustomer, deleteCustomer, updateCustomer, getCustomerStatuses } = require('../controllers/customerController')
-const { get } = require('mongoose')
 
 const router = express.Router()
 
