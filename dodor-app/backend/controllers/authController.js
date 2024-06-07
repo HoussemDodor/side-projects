@@ -3,7 +3,7 @@ const { sign } = require("jsonwebtoken");
 const bcrypt = require('bcrypt')
 
 const createToken = (_id) => {
-  return sign({ _id }, process.env.ACCES_TOKEN_SECRET, { expiresIn: "3d" });
+  return sign({ _id }, process.env.ACCES_TOKEN_SECRET, { expiresIn: "7d" });
 };
 
 // Refresh

@@ -9,23 +9,23 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 
 // Route imports
-const authRoutes = require("./routes/authRoutes")
-const userRoutes = require("./routes/userRoutes")
-const customerRoutes = require("./routes/customerRoutes")
-
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const customerRoutes = require("./routes/customerRoutes");
+const tileRoutes = require("./routes/tileRoutes");
 
 // Middleware imports
 const verifyJWT = require("./middleware/verifyJWT");
-const credentials = require("./middleware/credentials")
-const requestLogger = require("./middleware/requestLogger")
+const credentials = require("./middleware/credentials");
+const requestLogger = require("./middleware/requestLogger");
 
 //
 //  Uses
 //
 const app = express();
-app.use( express.static( 'public' ));
-app.get( "/", ( req, res ) => {
-  res.sendFile( path.join( __dirname + "/public/index.html" ));
+app.use(express.static("public"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
 // Middleware
@@ -35,19 +35,22 @@ app.use(cors(corsOptions));
 app.use(requestLogger);
 
 // Unprotected Routes
-app.use("/auth", authRoutes)
+app.use("/auth", authRoutes);
 
 // Protected Routes
-app.use(verifyJWT)
-app.use("/user", userRoutes)
-app.use("/customer", customerRoutes)
+app.use(verifyJWT);
+app.use("/user", userRoutes);
+app.use("/customer", customerRoutes);
+app.use("/tile", tileRoutes);
 
 // DB connection and start app
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log(`DB Connection succesful and the app is running on PORT ${process.env.PORT}`);
+      console.log(
+        `DB Connection succesful and the app is running on PORT ${process.env.PORT}`
+      );
     });
   })
   .catch((error) => {
