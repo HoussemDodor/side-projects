@@ -31,6 +31,10 @@ const tileSchema = new Schema(
       type: Number,
       required: true,
     },
+    unit: {
+      type: String,
+      required: true,
+    },
     supplier: {
       type: String,
       required: true,
