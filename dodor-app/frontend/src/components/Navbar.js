@@ -17,7 +17,7 @@ import { useLogout } from "../hooks/useLogout";
 const initialNavigation = [
   { name: "Home", href: "/", current: true },
   { name: "Klanten", href: "/customerOverview", current: false },
-  { name: "Tegels", href: "#", current: false },
+  { name: "Tegels", href: "/tileOverview", current: false },
   { name: "Bestellingen", href: "#", current: false },
 ];
 

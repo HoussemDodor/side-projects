@@ -8,6 +8,10 @@ const tileSchema = new Schema(
       type: String,
       required: true,
     },
+    showTitle: {
+      type: String,
+      required: true
+    },
     size: {
       type: String,
       required: true,

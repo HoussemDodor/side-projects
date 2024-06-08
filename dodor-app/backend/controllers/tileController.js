@@ -19,8 +19,11 @@ const getTile = async (req, res) => {
 const getAllTiles = async (req, res) => {
   try {
     const tiles = await Tile.find().sort({ createdAt: -1 });
+    tiles.enumPositionInStore = await Tile.schema.path('positionInStore').enumValues    
+    tiles.enumSupplier = await Tile.schema.path('supplier').enumValues
     res.status(200).json(tiles);
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error: error.message });
   }
 };

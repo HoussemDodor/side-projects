@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get("/get/:id", getTile)
 
-router.get("/get/all", getAllTiles)
+router.get("/all", getAllTiles)
 
 router.post("/create", createTile)
 
