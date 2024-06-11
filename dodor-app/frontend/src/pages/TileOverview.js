@@ -27,8 +27,8 @@ const TileOverview = () => {
 
   return (
     <>
-      <div className="bg-gray-200 h-[93vh] md:flex justify-center">
-        <div className="bg-gray-100 inline-flex md:w-[1400px] max-h-[90vh] m-5 p-5 overflow-y-scroll rounded shadow-lg">
+      <div className="bg-gray-200 h-[93vh] flex justify-center">
+        <div className="bg-gray-100 inline-flex w-full max-h-[90vh] m-5 p-5 overflow-y-scroll rounded shadow-lg">
           {/* <h1 className="w-full text-4xl">Tegel overzicht</h1> */}
           {tiles &&
           tiles.map((item) => (
