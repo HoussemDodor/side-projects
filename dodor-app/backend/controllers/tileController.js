@@ -2,14 +2,18 @@ const Tile = require("../models/tilesModel");
 const mongoose = require("mongoose");
 
 const getTile = async (req, res) => {
-  const { articleNumber } = req.params;
+  const { id } = req.params;
+
+  if (!mongoose.isValidObjectId(id))
+    return res.status(404).json({ error: "invalid Tile ID" });
 
   try {
-    const tile = await Tile.findOne({ articleNumber });
+    let tile = await Tile.findById(id);
 
     // Get the enum values and add it in the model to load it into select 
+    tile = tile.toJSON();
     tile.enumPositionInStore = await Tile.schema.path('positionInStore').enumValues    
-    tile.enumSupplier = await Tile.schema.path('enumSupplier').enumValues
+    tile.enumSupplier = await Tile.schema.path('supplier').enumValues
     res.status(200).json(tile);
   } catch (error) {
     res.status(400).json({ error: error.message });

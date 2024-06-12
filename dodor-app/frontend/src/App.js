@@ -10,6 +10,7 @@ import CustomerOverview from "./pages/CustomerOverview";
 import Navbar from "./components/Navbar";
 import CustomerDetails from "./pages/CustomerDetails";
 import TileOverview from "./pages/TileOverview";
+import TileDetails from "./pages/TileDetails";
 
 function App() {  
   const { user } = useAuthContext();
@@ -23,6 +24,7 @@ function App() {
           <Route path="/customerOverview" element={user ? <CustomerOverview /> : <Login />} />
           <Route path="/customer/:id" element={user ? <CustomerDetails /> : <Login />} />
           <Route path="/tileOverview" element={user ? <TileOverview /> : <Login />} />
+          <Route path="/tile/:id" element={user ? <TileDetails /> : <Login />} />
           <Route path="/account" element={user ? <Account /> : <Login />} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />

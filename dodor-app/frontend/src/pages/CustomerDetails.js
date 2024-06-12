@@ -193,7 +193,7 @@ const CustomerDetails = () => {
                 className="mr-2 w-full bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
               >
                 {statuses && statuses.map((item) => (
-                  <option>{item}</option>
+                  <option key={item}>{item}</option>
                 ))}
               </select>
             </div>
