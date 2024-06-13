@@ -79,7 +79,6 @@ const CustomerDetails = () => {
         }
       })
       .catch((err) => {
-        console.log(err)
         setError(
           err.response?.data?.error ? err.response.data.error : err.message
         );

@@ -10,8 +10,8 @@ router.get("/all", getAllTiles)
 
 router.post("/create", createTile)
 
-router.get("/update/:id", updateTile)
+router.patch("/update/:id", updateTile)
 
-router.get("/deleteTile", deleteTile)
+router.delete("/delete/:id", deleteTile)
 
 module.exports = router

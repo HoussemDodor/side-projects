@@ -21,24 +21,52 @@ const TileDetails = () => {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
       .then((res) => {
-        console.log(res.data);
         setTile(res.data);
       })
       .catch((err) => {
         setError(
           err.response?.data?.error ? err.response.data.error : err.message
         );
-        console.log(err);
       });
   }, [id, user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    axios
+      .patch(`/tile/update/${id}`, tile, {
+        headers: { Authorization: `Bearer ${user.acces_token}` },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          setTile(res.data);
+          setSucces("Tegel bijgewerkt");
+        }
+      })
+      .catch((err) => {
+        setError(
+          err.response?.data?.error ? err.response.data.error : err.message
+        );
+      });
   };
 
   const handleDelete = (e) => {
-    e.preventDefault();
-  };
+    if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?")) return;
+
+    axios
+      .delete(`/tile/delete/${id}`, {
+        headers: { Authorization: `Bearer ${user.acces_token}` },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/tileOverview")
+        }
+      })
+      .catch((err) => {
+        setError(
+          err.response?.data?.error ? err.response.data.error : err.message
+        );
+      });  };
 
   return (
     <div className="bg-gray-200 min-h-[93vh] flex justify-center">

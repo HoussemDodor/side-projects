@@ -34,6 +34,7 @@ const getAllTiles = async (req, res) => {
 
 const updateTile = async (req, res) => {
   const updatedTile = req.body;
+  console.log("reached")
 
   if (!mongoose.isValidObjectId(updatedTile._id))
     return res.status(404).json({ error: "invalid Tile ID" });
