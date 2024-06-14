@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getTile, getAllTiles, updateTile, deleteTile, createTile } = require('../controllers/tileController')
+const { getTile, getAllTiles, updateTile, deleteTile, createTile, getEnums } = require('../controllers/tileController')
 
 const router = express.Router()
 
@@ -13,5 +13,7 @@ router.post("/create", createTile)
 router.patch("/update/:id", updateTile)
 
 router.delete("/delete/:id", deleteTile)
+
+router.get("/getEnums", getEnums)
 
 module.exports = router

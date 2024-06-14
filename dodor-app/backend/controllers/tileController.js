@@ -10,10 +10,11 @@ const getTile = async (req, res) => {
   try {
     let tile = await Tile.findById(id);
 
-    // Get the enum values and add it in the model to load it into select 
+    // Get the enum values and add it in the model to load it into select
     tile = tile.toJSON();
-    tile.enumPositionInStore = await Tile.schema.path('positionInStore').enumValues    
-    tile.enumSupplier = await Tile.schema.path('supplier').enumValues
+    tile.enumPositionInStore = await Tile.schema.path("positionInStore")
+      .enumValues;
+    tile.enumSupplier = await Tile.schema.path("supplier").enumValues;
     res.status(200).json(tile);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -23,29 +24,27 @@ const getTile = async (req, res) => {
 const getAllTiles = async (req, res) => {
   try {
     const tiles = await Tile.find().sort({ createdAt: -1 });
-    tiles.enumPositionInStore = await Tile.schema.path('positionInStore').enumValues    
-    tiles.enumSupplier = await Tile.schema.path('supplier').enumValues
+    tiles.enumPositionInStore = await Tile.schema.path("positionInStore")
+      .enumValues;
+    tiles.enumSupplier = await Tile.schema.path("supplier").enumValues;
     res.status(200).json(tiles);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
 
 const updateTile = async (req, res) => {
   const updatedTile = req.body;
-  console.log("reached")
 
   if (!mongoose.isValidObjectId(updatedTile._id))
     return res.status(404).json({ error: "invalid Tile ID" });
 
   try {
     delete updatedTile.updatedAt;
-    const tile = await Tile.findByIdAndUpdate(
-      updatedTile._id,
-      updatedTile,
-      { new: true }
-    );
+    const tile = await Tile.findByIdAndUpdate(updatedTile._id, updatedTile, {
+      new: true,
+    });
     res.status(200).json(tile);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -60,7 +59,7 @@ const deleteTile = async (req, res) => {
 
   try {
     await Tile.findByIdAndDelete(id);
-    res.status(200).json({message: "Successful deletion of customer"});
+    res.status(200).json({ message: "Successful deletion of customer" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -77,4 +76,15 @@ const createTile = async (req, res) => {
   }
 };
 
-module.exports = { getTile, getAllTiles, updateTile, deleteTile, createTile };
+const getEnums = async (req, res) => {
+  try {
+    const enums = {};
+    enums.enumSupplier = await Tile.schema.path("supplier").enumValues;
+    enums.enumPositionInStore = await Tile.schema.path("positionInStore").enumValues;
+    res.status(200).json(enums)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getTile, getAllTiles, updateTile, deleteTile, createTile, getEnums };

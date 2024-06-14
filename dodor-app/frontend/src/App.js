@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import CustomerDetails from "./pages/CustomerDetails";
 import TileOverview from "./pages/TileOverview";
 import TileDetails from "./pages/TileDetails";
+import TileCreateForm from "./pages/TileCreateForm";
 
 function App() {  
   const { user } = useAuthContext();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/customer/:id" element={user ? <CustomerDetails /> : <Login />} />
           <Route path="/tileOverview" element={user ? <TileOverview /> : <Login />} />
           <Route path="/tile/:id" element={user ? <TileDetails /> : <Login />} />
+          <Route path="/createTile/" element={user ? <TileCreateForm /> : <Login />} />
           <Route path="/account" element={user ? <Account /> : <Login />} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />} />

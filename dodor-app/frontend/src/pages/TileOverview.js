@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext";
 import axios from "../api/axios";
 import { PlusIcon } from "@heroicons/react/24/solid";
@@ -55,13 +56,15 @@ const TileOverview = () => {
               <h1 className="text-l text-4xl hidden sm:block pl-2 m-2 font-medium">
                 Tegel overzicht
               </h1>
-              <button
-                type="button"
-                className="bg-gray-800 inline-flex items-center hover:bg-green-800 m-2 py-1 px-3 rounded-md text-white font-medium transition"
-              >
-                <PlusIcon className="size-5 mr-2 text-white" />
-                Nieuwe tegel
-              </button>
+              <Link to="/createTile" className="flex items-center">
+                <button
+                  type="button"
+                  className="bg-gray-800 inline-flex items-center hover:bg-green-800 m-2 p-2.5 rounded-md text-white font-medium transition"
+                >
+                  <PlusIcon className="size-5 mr-2 text-white" />
+                  Nieuwe tegel
+                </button>
+              </Link>
             </div>
             <input
               className="min-w-48 m-2 bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"

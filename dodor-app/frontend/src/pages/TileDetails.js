@@ -147,7 +147,7 @@ const TileDetails = () => {
                 id="outdoors"
                 name="outdoors"
                 checked={tile.outdoors}
-                onChange={(e) => setTile({ ...tile, outdoors: e.target.value })}
+                onChange={(e) => setTile({ ...tile, outdoors: e.target.checked })}
                 className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
               />
               <label
@@ -259,7 +259,7 @@ const TileDetails = () => {
                 id="inStore"
                 name="inStore"
                 checked={tile.inStore}
-                onChange={(e) => setTile({ ...tile, inStore: e.target.value })}
+                onChange={(e) => setTile({ ...tile, inStore: e.target.checked })}
                 className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
               />
               <label
@@ -341,7 +341,7 @@ const TileDetails = () => {
             {error}
           </div>
           <Link
-            to="/customerOverview"
+            to="/tileOverview"
             className="text-white inline-flex mb-5 bg-gray-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-auto px-4 py-2.5 text-center"
           >
             <ArrowLeftIcon className="size-5 mr-2 text-white" />
