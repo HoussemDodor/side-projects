@@ -39,7 +39,11 @@ const TileDetails = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          setTile(res.data);
+          setTile({
+            ...res.data,
+            enumPositionInStore: tile.enumPositionInStore,
+            enumSupplier: tile.enumSupplier,
+          });
           setSucces("Tegel bijgewerkt");
         }
       })
@@ -51,7 +55,8 @@ const TileDetails = () => {
   };
 
   const handleDelete = (e) => {
-    if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?")) return;
+    if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?"))
+      return;
 
     axios
       .delete(`/tile/delete/${id}`, {
@@ -59,14 +64,15 @@ const TileDetails = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          navigate("/tileOverview")
+          navigate("/tileOverview");
         }
       })
       .catch((err) => {
         setError(
           err.response?.data?.error ? err.response.data.error : err.message
         );
-      });  };
+      });
+  };
 
   return (
     <div className="bg-gray-200 min-h-[93vh] flex justify-center">
@@ -103,6 +109,7 @@ const TileDetails = () => {
                 Titel:
               </label>
               <input
+                required
                 type="text"
                 id="title"
                 name="title"
@@ -116,6 +123,7 @@ const TileDetails = () => {
                 Show Titel:
               </label>
               <input
+                required
                 type="text"
                 id="showTitle"
                 name="showTitle"
@@ -132,6 +140,7 @@ const TileDetails = () => {
                 Maat:
               </label>
               <input
+                required
                 type="text"
                 id="size"
                 name="size"
@@ -147,7 +156,9 @@ const TileDetails = () => {
                 id="outdoors"
                 name="outdoors"
                 checked={tile.outdoors}
-                onChange={(e) => setTile({ ...tile, outdoors: e.target.checked })}
+                onChange={(e) =>
+                  setTile({ ...tile, outdoors: e.target.checked })
+                }
                 className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
               />
               <label
@@ -163,6 +174,7 @@ const TileDetails = () => {
                 Artikel nummer:
               </label>
               <input
+                required
                 type="text"
                 id="articleNumber"
                 name="articleNumber"
@@ -179,7 +191,8 @@ const TileDetails = () => {
                 M² per doos:
               </label>
               <input
-                type="text"
+                required
+                type="number"
                 id="meterPerBox"
                 name="meterPerBox"
                 value={tile.meterPerBox}
@@ -196,7 +209,9 @@ const TileDetails = () => {
                   Verkoopprijs/{tile.unit}:
                 </label>
                 <input
-                  type="text"
+                  required
+                  type="number"
+                  step="0.01"
                   id="price"
                   name="price"
                   value={tile.price}
@@ -204,12 +219,13 @@ const TileDetails = () => {
                   className="mr-2 w-44 bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 />
               </div>
-              <div >
+              <div>
                 <label htmlFor="importPrice" className="mr-2">
                   Inkoopprijs/{tile.unit}:
                 </label>
                 <input
-                  type="text"
+                  type="number"
+                  step="0.01"
                   id="importPrice"
                   name="importPrice"
                   value={tile.importPrice}
@@ -226,6 +242,7 @@ const TileDetails = () => {
                 Eenheid:
               </label>
               <input
+                required
                 type="text"
                 id="unit"
                 name="unit"
@@ -240,6 +257,7 @@ const TileDetails = () => {
                 Leverancier:
               </label>
               <select
+                required
                 id="supplier"
                 name="supplier"
                 value={tile.supplier}
@@ -259,7 +277,9 @@ const TileDetails = () => {
                 id="inStore"
                 name="inStore"
                 checked={tile.inStore}
-                onChange={(e) => setTile({ ...tile, inStore: e.target.checked })}
+                onChange={(e) =>
+                  setTile({ ...tile, inStore: e.target.checked })
+                }
                 className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
               />
               <label
@@ -276,6 +296,7 @@ const TileDetails = () => {
               Positie in winkel:
             </label>
             <select
+              required
               id="positionInStore"
               name="positionInStore"
               value={tile.positionInStore}
