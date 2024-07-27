@@ -1,6 +1,9 @@
 # Side Projects
 Welcome to my side projects repository where I will use project based learning to learn.
 
+### Javascript
+[javascript-30](https://github.com/HoussemDodor/side-projects/tree/main/java-30) 30 small projects made in javascript
+
 ### React
 [expense-tracker-react](https://github.com/HoussemDodor/side-projects/tree/main/expense-tracker-react)
 An app which uses localstorage to keep track of your expenses build in react
