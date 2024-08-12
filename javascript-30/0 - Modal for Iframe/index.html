@@ -20,7 +20,9 @@
       <span>Javascript 30 Projects</span>
       <a target="_parent" href="../1 - Drumkit">1 - Drumkit</a>
       <a target="_parent" href="../2 - Clock">2 - Clock</a>
-      <a target="_parent" href="../3 - Playing with variables">3 - Playing with variables</a>
+      <a target="_parent" href="../3 - Playing with variables"
+        >3 - Playing with variables</a
+      >
       <a target="_parent" href="../4 - Arrays">4 - Arrays</a>
       <a target="_parent" href="../5 - Flex panels image gallery"
         >5 - Flex panels image gallery</a
@@ -28,13 +30,19 @@
       <a target="_parent" href="../6 - Ajax type head">6 - Ajax type head</a>
       <a target="_parent" href="../7 - More Arrays">7 - More Arrays</a>
       <a target="_parent" href="../8 - HTML5 Canvas">8 - HTML5 Canvas</a>
-      <a target="_parent" href="../9 - Dev tools tricks">9 - Dev tools tricks</a>
+      <a target="_parent" href="../9 - Dev tools tricks"
+        >9 - Dev tools tricks</a
+      >
       <a target="_parent" href="../10 - Check multiple checkboxes"
         >10 - Check multiple checkboxes</a
       >
-      <a target="_parent" href="../11 - Custom video player">11 - Custom video player</a>
+      <a target="_parent" href="../11 - Custom video player"
+        >11 - Custom video player</a
+      >
       <a target="_parent" href="../12 - KONAMI CODE">12 - KONAMI CODE</a>
-      <a target="_parent" href="../13 - Slide in on scroll">13 - Slide in on scroll</a>
+      <a target="_parent" href="../13 - Slide in on scroll"
+        >13 - Slide in on scroll</a
+      >
       <a target="_parent" href="../14 - Objects & Arrays (reference vs copy)"
         >14 - Objects & Arrays (reference vs copy)</a
       >
@@ -45,16 +53,26 @@
         >16 - Text shadow mouse move effect</a
       >
       <a target="_parent" href="../17 - Sorting">17 - Sorting</a>
-      <a target="_parent" href="../18 -Tally string with reduce">18 -Tally string with reduce</a>
+      <a target="_parent" href="../18 -Tally string with reduce"
+        >18 -Tally string with reduce</a
+      >
       <a target="_parent" href="../19 - Webcam">19 - Webcam</a>
-      <a target="_parent" href="../20 - Speech Recognition">20 - Speech Recognition</a>
+      <a target="_parent" href="../20 - Speech Recognition"
+        >20 - Speech Recognition</a
+      >
       <a target="_parent" href="../21 - Geolocation based Speedometer"
         >21 - Geolocation based Speedometer</a
       >
-      <a target="_parent" href="../22 - Follow along links">22 - Follow along links</a>
-      <a target="_parent" href="../23 - Speech Synthesis">23 - Speech Synthesis</a>
+      <a target="_parent" href="../22 - Follow along links"
+        >22 - Follow along links</a
+      >
+      <a target="_parent" href="../23 - Speech Synthesis"
+        >23 - Speech Synthesis</a
+      >
       <a target="_parent" href="../24 - Sticky nav">24 - Sticky nav</a>
-      <a target="_parent" href="../25 - Event capture, propagation, bubbling and once"
+      <a
+        target="_parent"
+        href="../25 - Event capture, propagation, bubbling and once"
         >25 - Event capture, propagation, bubbling and once</a
       >
       <a target="_parent" href="../26 - Stripe follow along dropdown"
@@ -63,24 +81,28 @@
       <a target="_parent" href="../27 - Click and drag to scroll"
         >27 - Click and drag to scroll</a
       >
-      <a target="_parent" href="../28 - Video Speed controller">28 - Video Speed controller</a>
-      <a target="_parent" href="../29 - Countdown clock">29 - Countdown clock</a>
+      <a target="_parent" href="../28 - Video Speed controller"
+        >28 - Video Speed controller</a
+      >
+      <a target="_parent" href="../29 - Countdown clock"
+        >29 - Countdown clock</a
+      >
       <a target="_parent" href="../30 - Whack a mole">30 - Whack a mole</a>
     </div>
 
     <style>
-      .menu {
-        z-index: 100;
-        position: absolute;
+      .menu {        
+        display: none;
+        position: fixed;
+        z-index: 1001;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         top: 20px;
         left: 20px;
         width: 300px;
-        max-height: 90vh;
-        display: none;
+        height: 90vh;
         flex-direction: row;
         padding: 10px;
-        border-radius: 13px 5px 0px 13px;
+        border-radius: 13px 5px 5px 13px;
         background-color: black;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -104,7 +126,7 @@
         text-decoration: none;
         border-radius: 25px;
       }
-      
+
       .menu a:hover {
         background-color: grey !important;
       }
