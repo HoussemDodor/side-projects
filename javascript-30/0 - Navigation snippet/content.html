@@ -1,0 +1,184 @@
+<div>
+  <div
+    class="dropdownBtn"
+    onClick="(function(){
+        document.getElementById('menu').classList.toggle('show');
+        return false;
+    })();return false;"
+  >
+    Other projects
+  </div>
+
+  <div id="menu" class="menu">
+    <span>Javascript 30 Projects</span>
+    <a href="../1 - Drumkit">1 - Drumkit</a>
+    <a href="../2 - Clock">2 - Clock</a>
+    <a href="../3 - Playing with variables"
+      >3 - Playing with variables</a
+    >
+    <a href="../4 - Arrays">4 - Arrays</a>
+    <a href="../5 - Flex panels image gallery"
+      >5 - Flex panels image gallery</a
+    >
+    <a href="../6 - Ajax type head">6 - Ajax type head</a>
+    <a href="../7 - More Arrays">7 - More Arrays</a>
+    <a href="../8 - HTML5 Canvas">8 - HTML5 Canvas</a>
+    <a href="../9 - Dev tools tricks">9 - Dev tools tricks</a>
+    <a href="../10 - Check multiple checkboxes"
+      >10 - Check multiple checkboxes</a
+    >
+    <a href="../11 - Custom video player"
+      >11 - Custom video player</a
+    >
+    <a href="../12 - KONAMI CODE">12 - KONAMI CODE</a>
+    <a href="../13 - Slide in on scroll"
+      >13 - Slide in on scroll</a
+    >
+    <a href="../14 - Objects & Arrays (reference vs copy)"
+      >14 - Objects & Arrays (reference vs copy)</a
+    >
+    <a href="../15 - LocalStorage and event "
+      >15 - LocalStorage and event delegation</a
+    >
+    <a href="../16 - Text shadow mouse move effect"
+      >16 - Text shadow mouse move effect</a
+    >
+    <a href="../17 - Sorting">17 - Sorting</a>
+    <a href="../18 -Tally string with reduce"
+      >18 -Tally string with reduce</a
+    >
+    <a href="../19 - Webcam">19 - Webcam</a>
+    <a href="../20 - Speech Recognition"
+      >20 - Speech Recognition</a
+    >
+    <a href="../21 - Geolocation based Speedometer"
+      >21 - Geolocation based Speedometer</a
+    >
+    <a href="../22 - Follow along links"
+      >22 - Follow along links</a
+    >
+    <a href="../23 - Speech Synthesis"
+      >23 - Speech Synthesis</a
+    >
+    <a href="../24 - Sticky nav">24 - Sticky nav</a>
+    <a
+     
+      href="../25 - Event capture, propagation, bubbling and once"
+      >25 - Event capture, propagation, bubbling and once</a
+    >
+    <a href="../26 - Stripe follow along dropdown"
+      >26 - Stripe follow along dropdown</a
+    >
+    <a href="../27 - Click and drag to scroll"
+      >27 - Click and drag to scroll</a
+    >
+    <a href="../28 - Video Speed controller"
+      >28 - Video Speed controller</a
+    >
+    <a href="../29 - Countdown clock">29 - Countdown clock</a>
+    <a href="../30 - Whack a mole">30 - Whack a mole</a>
+  </div>
+
+  <script>
+
+  </script>
+
+  <style>
+    .menu {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      top: 20px;
+      left: 20px;
+      width: auto;
+      height: 90vh;
+      flex-direction: row;
+      padding: 15px;
+      border: solid black 3px;
+      border-radius: 13px 5px 5px 13px;
+      background-color: darkslategrey;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.37);
+      -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.37);
+      box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.37);
+
+      /* Scrollbar customization */
+      --sb-track-color: #252525;
+      --sb-thumb-color: #7b7b7b;
+      --sb-size: 10px;
+    }
+
+    .menu a {
+      font-size: 14px;
+      font-weight: 400;
+      padding: 5px 0px 5px 20px;
+      margin: 5px;
+      background-color: white;
+      width: 95%;
+      color: black;
+      text-decoration: none;
+      border-radius: 25px;
+    }
+
+    .menu a:hover {
+      background-color: grey !important;
+    }
+
+    .menu span {
+      font-size: 24px;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+
+    .menu::-webkit-scrollbar {
+      width: var(--sb-size);
+    }
+
+    .menu::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 13px;
+    }
+
+    .menu::-webkit-scrollbar-thumb {
+      background: var(--sb-thumb-color);
+      border-radius: 13px;
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+      .menu {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+      }
+    }
+
+    .dropdownBtn {
+      background-color: white;
+      border: 3px solid black;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 500;
+      color: black;
+      border-radius: 5px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      font-size: medium;
+      cursor: pointer;
+      box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.37);
+    }
+
+    .dropdownBtn:hover {
+      background-color: darkslategrey;
+      color: white;
+    }
+
+    .show {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  </style>
+</div>
