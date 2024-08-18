@@ -6,18 +6,6 @@
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
-    <iframe
-    src="../0 - Modal for Iframe/index.html"
-    frameborder="0"
-    allowtransparency="true" sandbox="allow-top-navigation allow-same-origin allow-scripts"
-    title="Navigation"
-    style="
-      width: 100% !important;
-      height: 100vh !important;
-      position: fixed !important;
-      z-index: 2147480999 !important;
-    "
-    ></iframe>
 
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
 
@@ -62,9 +50,13 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const fifteen = inventors.filter(x => x.year >= 1500 && x.year < 1600)
+    console.log(fifteen)
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const fullNames = inventors.map(x => x.first + " " + x.last)
+    console.log(fullNames)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
