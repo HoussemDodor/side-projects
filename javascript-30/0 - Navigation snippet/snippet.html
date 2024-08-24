@@ -1,0 +1,15 @@
+<!-- Navigation dropdown button -->
+<script>
+  // Create the container div element
+  const contentContainer = document.createElement("div");
+  contentContainer.id = "content-container"; // Set the ID
+  document.body.appendChild(contentContainer); // Append it to the body or a specific parent element
+
+  // JavaScript to fetch and inject content
+  fetch("../0 - Navigation snippet/content.html")
+    .then((response) => response.text())
+    .then((data) => {
+      contentContainer.innerHTML = data; // Inject content into the dynamically created div
+    })
+    .catch((error) => console.error("Error loading content:", error));
+</script>
