@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
@@ -27,7 +27,7 @@ const TileCreateForm = () => {
   const [enums, setEnums] = useState({});
 
   useEffect(() => {
-    axios
+    api
       .get("/tile/getEnums", {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -46,7 +46,7 @@ const TileCreateForm = () => {
 
     console.log(tile);
 
-    axios
+    api
       .post(`/tile/create`, tile, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })

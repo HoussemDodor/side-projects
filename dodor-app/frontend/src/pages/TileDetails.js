@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { nl } from "date-fns/locale";
@@ -16,7 +16,7 @@ const TileDetails = () => {
   const [tile, setTile] = useState(null);
 
   useEffect(() => {
-    axios
+    api
       .get(`/tile/get/${id}`, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -33,7 +33,7 @@ const TileDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
+    api
       .patch(`/tile/update/${id}`, tile, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -58,7 +58,7 @@ const TileDetails = () => {
     if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?"))
       return;
 
-    axios
+    api
       .delete(`/tile/delete/${id}`, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })

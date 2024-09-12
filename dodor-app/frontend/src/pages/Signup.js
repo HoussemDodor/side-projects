@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import axios from "../api/axios"
+import { api } from "../api/axios"
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ const Signup = () => {
     setIsLoading(true);
     setError(null);
 
-    await axios.post("/auth/signup", {email, password}).then((res) => {
+    await api.post("/auth/signup", {email, password}).then((res) => {
       if (res.status === 200) {      
         localStorage.setItem("user", JSON.stringify(res.data));
         dispatch({ type: "LOGIN", payload: res.data });  

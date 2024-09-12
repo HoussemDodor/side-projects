@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 
 
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
     setIsLoading(true);
     setError(null);
 
-    axios.post("/auth/login", {email, password}).then((res) => {
+    api.post("/auth/login", {email, password}).then((res) => {
       if (res.status === 200) {      
         localStorage.setItem("user", JSON.stringify(res.data));
         dispatch({ type: "LOGIN", payload: res.data });  

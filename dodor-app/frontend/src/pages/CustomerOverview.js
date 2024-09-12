@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 import CustomerCard from "../components/CustomerCard";
 import CreateCustomerForm from "../components/CreateCustomerForm";
@@ -9,7 +9,7 @@ const CustomerOverview = () => {
   const { user } = useAuthContext();
 
   useEffect(() => {
-    axios
+    api
       .get("/customer/all", {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })

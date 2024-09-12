@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
 import TileCard from "../components/TileCard";
@@ -14,7 +14,7 @@ const TileOverview = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios
+    api
       .get("/tile/all", {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })

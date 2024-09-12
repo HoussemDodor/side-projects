@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const CreateCustomerForm = (props) => {
@@ -15,7 +15,7 @@ const CreateCustomerForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios
+    api
       .post(
         "/customer/create",
         {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { nl } from "date-fns/locale";
-import axios from "../api/axios";
+import { api } from "../api/axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
@@ -17,7 +17,7 @@ const CustomerDetails = () => {
   const [statuses, setStatuses] = useState('')
 
   useEffect(() => {
-    axios
+    api
       .get(`/customer/get/${id}`, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -30,7 +30,7 @@ const CustomerDetails = () => {
         );
       });
 
-      axios
+      api
       .get(`/customer/statuses`, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -49,7 +49,7 @@ const CustomerDetails = () => {
   const handleSave = (e) => {
     e.preventDefault();
 
-    axios
+    api
       .patch(`/customer/update/${id}`, customer, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -69,7 +69,7 @@ const CustomerDetails = () => {
   const handleDelete = () => {
     if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?")) return;
 
-    axios
+    api
       .delete(`/customer/delete/${id}`, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
