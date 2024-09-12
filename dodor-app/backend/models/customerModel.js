@@ -13,14 +13,6 @@ const customerSchema = new Schema(
       type: String,
       required: true,
     },
-    surname: {
-      type: String,
-      required: false,
-    },
-    phoneNumber: {
-      type: String,
-      required: false,
-    },
     phoneNumber: {
       type: String,
       required: false,

@@ -8,7 +8,6 @@ const CreateCustomerForm = (props) => {
   const [error, setError] = useState("");
 
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -20,7 +19,6 @@ const CreateCustomerForm = (props) => {
         "/customer/create",
         {
           name,
-          surname,
           email,
           phoneNumber,
         },
@@ -29,7 +27,6 @@ const CreateCustomerForm = (props) => {
       .then((res) => {
         if (res.status === 200) {
           setName("");
-          setSurname("");
           setEmail("");
           setPhoneNumber("");
         }
@@ -57,18 +54,6 @@ const CreateCustomerForm = (props) => {
           value={name}
           required
           onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className="mb-5">
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Achternaam:
-        </label>
-        <input
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          type="text"
-          value={surname}
-          required
-          onChange={(e) => setSurname(e.target.value)}
         />
       </div>
       <div className="mb-5">

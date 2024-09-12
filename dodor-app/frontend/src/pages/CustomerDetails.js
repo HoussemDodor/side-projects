@@ -102,7 +102,7 @@ const CustomerDetails = () => {
 
           <div className="mb-5">
             <h1 className="text-3xl font-bold">
-              {customer.name + " " + customer.surname}
+              {customer.name}
             </h1>
             <p className="italic">
               {formatDistanceToNow(customer.createdAt, { locale: nl })} geleden
@@ -126,21 +126,6 @@ const CustomerDetails = () => {
                     setCustomer({ ...customer, name: e.target.value })
                   }
                   className="mr-5 bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                />
-              </div>
-              <div>
-                <label htmlFor="surname" className="mr-2">
-                  Achternaam:
-                </label>
-                <input
-                  type="text"
-                  id="surname"
-                  name="surname"
-                  value={customer.surname}
-                  onChange={(e) =>
-                    setCustomer({ ...customer, surname: e.target.value })
-                  }
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 />
               </div>
             </div>
