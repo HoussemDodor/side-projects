@@ -16,6 +16,8 @@ const useAxiosInterceptor = () => {
     (error) => {
       if (error.response && error.response.status === 401) {
         // If the response status is 401, log out the user
+        console.log("ERROR FROM /api/axios.js")
+        console.log(error)
         logout();
         navigate("/login"); // Redirect to the login page
       }
@@ -24,4 +26,4 @@ const useAxiosInterceptor = () => {
   );
 };
 
-export { api, useAxiosInterceptor };
+export { api };

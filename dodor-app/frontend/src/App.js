@@ -12,9 +12,13 @@ import CustomerDetails from "./pages/CustomerDetails";
 import TileOverview from "./pages/TileOverview";
 import TileDetails from "./pages/TileDetails";
 import TileCreateForm from "./pages/TileCreateForm";
+import { useEffect } from "react";
+import { useAxiosInterceptor } from "./hooks/useAxiosInterceptor";
+
 
 function App() {  
   const { user } = useAuthContext();
+  useAxiosInterceptor();
 
   return (
     <div className="bg-[#F1F1F1] min-h-screen">
