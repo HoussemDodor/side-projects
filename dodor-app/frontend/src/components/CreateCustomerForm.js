@@ -22,6 +22,7 @@ const CreateCustomerForm = (props) => {
           name,
           email,
           phoneNumber,
+          adress,
         },
         { headers: { Authorization: `Bearer ${user.acces_token}` } }
       )

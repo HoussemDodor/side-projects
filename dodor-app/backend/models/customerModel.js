@@ -17,6 +17,10 @@ const customerSchema = new Schema(
       type: String,
       required: false,
     },
+    adress: {
+      type: String,
+      required: false,
+    },
     status: {
       type: String,
       required: true,

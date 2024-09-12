@@ -89,7 +89,7 @@ const CustomerDetails = () => {
       {customer ? (
         <form
           onSubmit={handleSave}
-          className="bg-gray-100 rounded shadow-lg max-h-[90vh] my-5 p-5 overflow-y-scroll"
+          className="bg-gray-100 max-w-md rounded shadow-lg max-h-[90vh] my-5 p-5 overflow-y-scroll"
         >
           <Link
             to="/customerOverview"
@@ -109,7 +109,7 @@ const CustomerDetails = () => {
               {formatDistanceToNow(customer.updatedAt, { locale: nl })} geleden
               laatst bewerkt
             </p>
-            <div className="flex mb-5">
+            <div className="mb-5">
               <div>
                 <label htmlFor="name" className="mr-2">
                   Naam:
@@ -123,7 +123,7 @@ const CustomerDetails = () => {
                   onChange={(e) =>
                     setCustomer({ ...customer, name: e.target.value })
                   }
-                  className="mr-5 bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                  className="mr-2 w-full bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 />
               </div>
             </div>
