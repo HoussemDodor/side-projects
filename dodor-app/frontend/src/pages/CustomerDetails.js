@@ -8,13 +8,13 @@ import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 const CustomerDetails = () => {
   const { user } = useAuthContext();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const [error, setError] = useState("");
   const [succes, setSucces] = useState("");
   const [customer, setCustomer] = useState(null);
-  const [statuses, setStatuses] = useState('')
+  const [statuses, setStatuses] = useState("");
 
   useEffect(() => {
     api
@@ -30,7 +30,7 @@ const CustomerDetails = () => {
         );
       });
 
-      api
+    api
       .get(`/customer/statuses`, {
         headers: { Authorization: `Bearer ${user.acces_token}` },
       })
@@ -42,8 +42,6 @@ const CustomerDetails = () => {
           err.response?.data?.error ? err.response.data.error : err.message
         );
       });
-
-      
   }, [user, id]);
 
   const handleSave = (e) => {
@@ -67,7 +65,8 @@ const CustomerDetails = () => {
   };
 
   const handleDelete = () => {
-    if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?")) return;
+    if (!window.confirm("Ben je zeker dat je deze klant wilt verwijderen?"))
+      return;
 
     api
       .delete(`/customer/delete/${id}`, {
@@ -75,7 +74,7 @@ const CustomerDetails = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          navigate("/customerOverview")
+          navigate("/customerOverview");
         }
       })
       .catch((err) => {
@@ -101,9 +100,7 @@ const CustomerDetails = () => {
           </Link>
 
           <div className="mb-5">
-            <h1 className="text-3xl font-bold">
-              {customer.name}
-            </h1>
+            <h1 className="text-3xl font-bold">{customer.name}</h1>
             <p className="italic">
               {formatDistanceToNow(customer.createdAt, { locale: nl })} geleden
               gecreërd
@@ -118,6 +115,7 @@ const CustomerDetails = () => {
                   Naam:
                 </label>
                 <input
+                  required
                   type="text"
                   id="name"
                   name="name"
@@ -134,6 +132,7 @@ const CustomerDetails = () => {
                 Email:
               </label>
               <input
+                required
                 type="email"
                 id="email"
                 name="email"
@@ -149,6 +148,7 @@ const CustomerDetails = () => {
                 Telefoon:
               </label>
               <input
+                required
                 type="tel"
                 pattern="[0-9]{6,}"
                 id="phoneNumber"
@@ -159,6 +159,22 @@ const CustomerDetails = () => {
                 value={customer.phoneNumber}
                 onChange={(e) =>
                   setCustomer({ ...customer, phoneNumber: e.target.value })
+                }
+                className="mr-2 w-full bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+              />
+            </div>
+            <div className="mb-5">
+              <label htmlFor="adress" className="mr-2">
+                Adres:
+              </label>
+              <input
+                required
+                type="text"
+                id="adress"
+                name="adress"
+                value={customer.adress}
+                onChange={(e) =>
+                  setCustomer({ ...customer, adress: e.target.value })
                 }
                 className="mr-2 w-full bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
               />
@@ -176,9 +192,8 @@ const CustomerDetails = () => {
                 }
                 className="mr-2 w-full bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
               >
-                {statuses && statuses.map((item) => (
-                  <option key={item}>{item}</option>
-                ))}
+                {statuses &&
+                  statuses.map((item) => <option key={item}>{item}</option>)}
               </select>
             </div>
           </div>

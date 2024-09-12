@@ -10,6 +10,7 @@ const CreateCustomerForm = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [adress, setAdress] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const CreateCustomerForm = (props) => {
           setName("");
           setEmail("");
           setPhoneNumber("");
+          setAdress("");
         }
       })
       .catch((err) => {
@@ -50,9 +52,9 @@ const CreateCustomerForm = (props) => {
         </label>
         <input
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
           type="text"
           value={name}
-          required
           onChange={(e) => setName(e.target.value)}
         />
       </div>
@@ -62,9 +64,9 @@ const CreateCustomerForm = (props) => {
         </label>
         <input
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
           type="email"
           value={email}
-          required
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -74,11 +76,23 @@ const CreateCustomerForm = (props) => {
         </label>
         <input
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          required
           type="tel"
           pattern="[0-9]{6,}"
           onInvalid={(e) => e.target.setCustomValidity("Minimaal 6 cijfers")}
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+      </div>
+      <div className="mb-5">
+        <label className="block mb-2 text-sm font-medium text-gray-900">
+          Adres:
+        </label>
+        <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          type="text"
+          value={adress}
+          onChange={(e) => setAdress(e.target.value)}
         />
       </div>
       <button
