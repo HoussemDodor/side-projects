@@ -1,5 +1,5 @@
 # Side Projects
-Welcome to my side projects repository where I will use project based learning to learn.
+Welcome to my side projects repository where I will use project based learning to learn different techniques and languages.
 
 ### Javascript
 [javascript-30](https://github.com/HoussemDodor/side-projects/tree/main/java-30) 30 small projects made in javascript
