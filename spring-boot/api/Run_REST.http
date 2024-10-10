@@ -1,0 +1,64 @@
+### get all runs
+### GET ALL
+### Returns 200
+GET http://localhost:8080/api/runs
+
+### find a run by ID
+### GET
+### Returns 200
+GET http://localhost:8080/api/runs/1
+
+### Find a run using invalid id
+### GET 
+### Returns 404 ID not found
+GET http://localhost:8080/api/runs/10001
+
+### create new run
+### POST 
+### Returns 201
+POST http://localhost:8080/api/runs
+Content-Type: application/json
+
+{
+    "id": 3,
+    "title": "Tuesday Morning Run",
+    "startedOn": "2024-10-10T11:07:19.3688328",
+    "completedOn": "2024-10-10T11:37:19.3688328",
+    "miles": 3,
+    "location": "INDOORS"
+  }
+
+### Create new run
+### POST
+### Returns 400
+POST http://localhost:8080/api/runs
+Content-Type: application/json
+
+{
+    "id": 3,
+    "title": "Tuesday Morning Run",
+    "startedOn": "2024-10-10T11:07:19.3688328",
+    "completedOn": "2024-10-10T11:37:19.3688328",
+    "miles": 3,
+    "location": "INDOORS"
+  }
+
+### Create invalid run (startdate is after completed on date)
+### POST
+### Returns 400
+POST http://localhost:8080/api/runs
+Content-Type: application/json
+
+{
+    "id": 3,
+    "title": "Tuesday Morning Run",
+    "startedOn": "2024-10-10T11:37:19.3688328",
+    "completedOn": "2024-10-10T11:07:19.3688328",
+    "miles": 3,
+    "location": "INDOORS"
+  }
+
+### Delete a run by Id
+### DELETE DeleteRun()
+### returns 204
+DELETE http://localhost:8080/api/runs/3
