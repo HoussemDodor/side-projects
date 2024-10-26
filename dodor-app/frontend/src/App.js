@@ -12,7 +12,6 @@ import CustomerDetails from "./pages/CustomerDetails";
 import TileOverview from "./pages/TileOverview";
 import TileDetails from "./pages/TileDetails";
 import TileCreateForm from "./pages/TileCreateForm";
-import { useEffect } from "react";
 import { useAxiosInterceptor } from "./hooks/useAxiosInterceptor";
 
 
