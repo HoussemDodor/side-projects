@@ -33,9 +33,9 @@ const Login = () => {
   return (
     <section className="bg-gray-50 min-h-[90vh] flex items-center justify-center">
       {/* Login container */}
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl py-5">
+      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5">
         {/* form */}
-        <div className="sm:w-1/2 px-16">
+        <div className="sm:w-1/2 px-5">
           <h2 className="font-bold text-2xl">Login</h2>
           <p className="text-sm mt-4">
             If you already have an account, easily log in
@@ -87,8 +87,8 @@ const Login = () => {
         </div>
 
         {/* image */}
-        <div className="sm:block hidden w-1/2">
-          <img src="/logo512.png" alt="" className="rounded-2xl" />
+        <div className="sm:flex justify-center items-center hidden w-1/2 px-5">
+          <img src="/dodor_logo.png" alt="" className="rounded-2xl max-h-max" />
         </div>
       </div>
     </section>
