@@ -64,11 +64,11 @@ const TileCreateForm = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-[93vh] flex justify-center">
+    <div className="bg-gray-200 min-h-[93vh] flex p-5 justify-center">
       <form
         type="submit"
         onSubmit={handleSubmit}
-        className="bg-gray-100 rounded shadow-lg max-h-[90vh] my-5 p-5 overflow-y-scroll"
+        className="bg-gray-100 w-full rounded shadow-lg p-5"
       >
         {/* Back Button */}
         <Link

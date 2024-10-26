@@ -85,11 +85,11 @@ const CustomerDetails = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-[93vh] flex justify-center">
+    <div className="bg-gray-200 min-h-[93vh] p-5 flex justify-center">
       {customer ? (
         <form
           onSubmit={handleSave}
-          className="bg-gray-100 max-w-md rounded shadow-lg max-h-[90vh] my-5 p-5 overflow-y-scroll"
+          className="bg-gray-100 w-full rounded shadow-lg max-h-[90vh] p-5 overflow-y-scroll"
         >
           <Link
             to="/customerOverview"
@@ -213,6 +213,7 @@ const CustomerDetails = () => {
               Verwijderen
             </button>
           </div>
+          
 
           {error && (
             <div className="bg-[#ffefef] p-2 max-w-80 border-solid border-2 border-red-600 rounded-xl">
