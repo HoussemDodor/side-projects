@@ -43,7 +43,7 @@ const CreateCustomerForm = (props) => {
 
   return (
     <form
-      className="bg-gray-100 min-w-[30%] p-5 m-5 rounded shadow-lg"
+      className="bg-gray-100 min-w-[30%] p-5 mb-5 rounded shadow-lg"
       onSubmit={handleSubmit}
     >
       <h1 className="text-2xl mb-5">Nieuwe klant</h1>
