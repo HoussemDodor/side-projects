@@ -78,7 +78,6 @@ const TileDetails = () => {
     <div className="bg-gray-200 min-h-[93vh] flex p-5 justify-center">
       {tile ? (
         <form
-          type="submit"
           onSubmit={handleSubmit}
           className="w-full bg-gray-100 rounded shadow-lg p-5"
         >
@@ -88,7 +87,7 @@ const TileDetails = () => {
             className="text-white inline-flex mb-5 bg-gray-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg w-auto px-4 py-2.5 text-center"
           >
             <ArrowLeftIcon className="size-5 mr-2 text-white" />
-            <button>Terug</button>
+            <button type="button">Terug</button>
           </Link>
 
           {/* Content */}

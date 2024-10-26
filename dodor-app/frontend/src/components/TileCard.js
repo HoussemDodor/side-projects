@@ -5,7 +5,7 @@ const TileCard = (props) => {
     <>
       <div className="bg-white text-gray-900 w-80 m-2 min-h-[10rem] shadow-lg rounded-md overflow-hidden">
         <img
-          className="w-full h-auto max-h-5/6 object-cover"
+          className="w-full h-60 object-cover"
           alt="Tile"
           src={props.tile.picture}
         />
