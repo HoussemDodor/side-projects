@@ -21,4 +21,8 @@ The backend for the mern-stack-app. It uses Express to set up an API and mongoos
 [dodor-app backend](https://github.com/HoussemDodor/side-projects/tree/main/dodor-app/frontend)
 An implemtation of my own boilerplate to quickly set up projects using the MERN stack.
 
+### Java
+[spring boot REST server](https://github.com/HoussemDodor/side-projects/tree/main/spring-boot) 
+A REST Api made with spring boot 
+
 
