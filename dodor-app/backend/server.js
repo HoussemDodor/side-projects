@@ -47,12 +47,24 @@ app.use("/tile", tileRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log(
-        `DB Connection succesful and the app is running on PORT ${process.env.PORT}`
-      );
-    });
+    console.log("DB connection successful");
   })
   .catch((error) => {
-    console.log(error.message);
+    console.error("DB connection error:", error.message);
   });
+
+// Local testing
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => {
+//     app.listen(process.env.PORT, () => {
+//       console.log(
+//         `DB Connection succesful and the app is running on PORT ${process.env.PORT}`
+//       );
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error.message);
+//   });
+
+module.exports = app
